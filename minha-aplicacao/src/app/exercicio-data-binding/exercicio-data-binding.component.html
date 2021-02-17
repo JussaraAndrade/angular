@@ -1,0 +1,31 @@
+
+<!--
+  Properties binding:
+  [src]
+
+  Dentro da chave pode ser uma expressão, varivável ou uma função.
+  - Consegue setar o binding de forma dinâmica.
+
+  Vimos:
+
+  - Binding de propriedades
+  - Binding de atributos
+-->
+<input type="text" [value]="initialValue">
+
+<br>
+
+<button [disabled]="isDisabled">Clique em mim!</button>
+
+<br>
+
+<!--
+  operador ternario: [attr.aria-label]="isDisabled ? 'Botão desabilitado' : accessibilityText
+  função: [attr.aria-label]="nomeFuncao()"
+  atributo:  [attr.aria-label]="nomeAtributo"
+-->
+<p [attr.aria-label]="isDisabled ? 'Botão desabilitado' : accessibilityText">Um texto qualquer... </p>
+
+<br>
+
+<img [src]="imageURL">
