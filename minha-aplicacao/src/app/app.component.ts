@@ -9,7 +9,7 @@ stylesUrls; definir os estilos para esse compoentes.
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 
 /*
@@ -17,32 +17,36 @@ stylesUrls; definir os estilos para esse compoentes.
 */
 export class AppComponent {
   //Variáveis da classe
-  title = 'minha-aplicacao';
+  //title = 'Seja Bem-vindo!';
+
+  /*
   titulo = 'Titulo em PT';
-  meuNumero = 10;
+  meuNumero = 10;*/
 
   /*
     Criando uma função, o construtor da classe.
     - construtor de uma classe é a primeira função vai ser executada quando a classe é iniciada/instanciada
     Obs: Quando essa classe surgir ela irá aparecer no constructor(){}
   */
-  constructor(){
-    console.log('Passei por aqui!')
+  constructor() {
+
 
     /*
+    console.log('Passei por aqui!');
+
      arrow function:
 
       setTimeout(() =>{
       console.log('PASSA AQUI DEPOIS DE 3')
     }, 3000)
     }
-     */
+
     setTimeout(() =>{
       //referencia this altera a variavel da classe
       this.titulo = 'titulo foi mudado depois de 3 segundos';
       this.meuNumero = 100;
       console.log('PASSA AQUI DEPOIS DE 3')
-    }, 3000)
+    }, 3000)*/
   }
 
   /*
@@ -51,8 +55,8 @@ export class AppComponent {
     function sum(){}
 
     *Raramente irá aparecer o function
-  */
+
   sum(number1: number, number2:number){
     return number1 + number2;
-  }
+  }*/
 }

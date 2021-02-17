@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Navegadores coloca margin própria na tag boby
+- Boa prática resetar o css
+Obs: os estilos são criados para cada componentes, são encaplusados
+*/
+body{
+  margin: 0;
+}

@@ -1,0 +1,13 @@
+.header{
+  text-align: center;
+  padding: 0.8rem;
+  background-color: #3f51b5;
+
+  /*BEM CSS - defini algumas regras do css
+  - Junta ao elemento pai*/
+  &__title{
+    color: #ebedf7;
+    margin: 0;
+    font-size: 2rem;
+  }
+}
