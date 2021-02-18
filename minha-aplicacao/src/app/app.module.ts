@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ExercicioContadorComponent } from './exercicio-contador/exercicio-contador.component';
+import { ExercicioDiretivasComponent } from './exercicio-diretivas/exercicio-diretivas.component';
 
 @NgModule({
   //Adiciona o componente no módulo principal
@@ -17,7 +18,8 @@ import { ExercicioContadorComponent } from './exercicio-contador/exercicio-conta
     HomeComponent,
     FooterComponent,
     ExercicioDataBindingComponent,
-    ExercicioContadorComponent
+    ExercicioContadorComponent,
+    ExercicioDiretivasComponent
   ],
   imports: [
     BrowserModule,
