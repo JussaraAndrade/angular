@@ -11,7 +11,23 @@
   - Binding de atributos
 -->
 
-<h1>Exemplos Event Binding:</h1>
+<!-- EXERCÍCIO CONTADOR -->
+<!--
+  [valor] = "'Olá, mundo!'" - String
+  [valor] = "10" - Number
+-->
+<app-exercicio-contador
+  [valor]="10"
+  (valorMudou)="onValorAtualizadoNoContador($event)"
+></app-exercicio-contador>
+
+<hr>
+<!--EXEMPLOS DE EVENT BINDING -->
+
+<button (click)="onClickBotaoEmissor($event)">
+  Emitir informação de clique.
+</button><br><br>
+
 <button (click)="onClick($event)">Clique em mim!</button>
 
 <!--
@@ -31,7 +47,7 @@ valor do Input: {{ valorDoInput }}
 
 <hr />
 
-<h1>Exemplos Property Binding:</h1>
+<!--EXEMPLOS DE PROPERTY BINDING-->
 
 <h2>Palavra: {{ palavra }}</h2>
 <h2>Cor: {{ color }}</h2>

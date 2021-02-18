@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-exercicio-data-binding',
@@ -7,8 +7,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExercicioDataBindingComponent implements OnInit {
   //Decoretor @input
+  /*
+    @Input; para receber informações
+   */
   @Input() palavra!: string;
   @Input() color!: string;
+
+  /*
+    @Output; para emitir informações
+
+    Atenção:
+    EventEmitter - importa do angular core. É uma variavel emissor de eventos.
+  */
+ @Output() clicado = new EventEmitter();
 
   imageURL =
     'https://image.winudf.com/v2/image1/Y29tLnRhbWFyYWFwcHMuY3V0ZWxpdHRsZWtpdHRlbnNfc2NyZWVuXzRfMTU1ODgxNDI0Nl8wNDc/screen-4.jpg?fakeurl=1&type=.jpg';
@@ -38,4 +49,16 @@ export class ExercicioDataBindingComponent implements OnInit {
   passouMouse() {
     console.log('alguém passou o mouse');
   }
+
+  onClickBotaoEmissor($event: any){
+    console.log('Devo emitir informações para o componente pai.', $event);
+    //Emite o evento: emit() dentro pode passar string, boolean ou proprio evento de clique.
+    //Recebo evento de clique emite componente pai
+    this.clicado.emit();
+  }
+
+  onValorAtualizadoNoContador(novoValor: any){
+    console.log('onValorAtualizadoNoContador: ', novoValor);
+  }
+
 }

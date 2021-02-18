@@ -16,10 +16,10 @@ stylesUrls; definir os estilos para esse compoentes.
   Um compoente tem uma classe, pode ter funções, variáveis, chamar outras classes e métodos.
 */
 export class AppComponent {
-    pudim = 'uma palavra';
-    favoriteColor = 'green';
-   //Variáveis da classe
-    title = 'Seja bem-vindo! =)';
+  pudim = 'uma palavra';
+  favoriteColor = 'green';
+  //Variáveis da classe
+  title = 'Seja bem-vindo! =)';
 
   /*
   titulo = 'Titulo em PT';
@@ -31,7 +31,6 @@ export class AppComponent {
     Obs: Quando essa classe surgir ela irá aparecer no constructor(){}
   */
   constructor() {
-
     /*
     console.log('Passei por aqui!');
 
@@ -61,4 +60,9 @@ export class AppComponent {
     return number1 + number2;
   }
   */
+
+  eventoRecebido($event: any) {
+    console.log('AppComponent: EVENTO RECEBIDO!', $event);
+  }
+
 }

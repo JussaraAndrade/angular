@@ -19,12 +19,16 @@ Concatenar os dois titulos
 <app-header [title]="title"></app-header>
 
 <!-- <app-home></app-home> -->
-<!--Property Binding; enviando informação componente pai, para o componente filho-->
+
+<!--Property Binding; enviando informação componente pai, para o componente filho -->
+
 <app-exercicio-data-binding
   [palavra]="pudim"
   [color]="favoriteColor"
+  (clicado)="eventoRecebido($event)"
   ></app-exercicio-data-binding>
 <app-footer></app-footer>
+
 
 
 
