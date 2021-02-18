@@ -16,8 +16,10 @@ stylesUrls; definir os estilos para esse compoentes.
   Um compoente tem uma classe, pode ter funções, variáveis, chamar outras classes e métodos.
 */
 export class AppComponent {
-  //Variáveis da classe
-  //title = 'Seja Bem-vindo!';
+    pudim = 'uma palavra';
+    favoriteColor = 'green';
+   //Variáveis da classe
+    title = 'Seja bem-vindo! =)';
 
   /*
   titulo = 'Titulo em PT';
@@ -29,7 +31,6 @@ export class AppComponent {
     Obs: Quando essa classe surgir ela irá aparecer no constructor(){}
   */
   constructor() {
-
 
     /*
     console.log('Passei por aqui!');
@@ -58,5 +59,6 @@ export class AppComponent {
 
   sum(number1: number, number2:number){
     return number1 + number2;
-  }*/
+  }
+  */
 }

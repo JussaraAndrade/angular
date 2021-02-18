@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 /*
 Decorator @Component nele pode adicionar vários informações isso é Metadados (que são informações a mais da classe)
@@ -13,7 +13,10 @@ Obs:Ele vai dizer quem é o selector, templateUrl e o styleUrls
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  title = 'Seja bem-vindo!'
+  /*Valor default
+  @Input() title = 'Seja bem-vindo!'
+  */
+  @Input() title!: string;
 
   constructor() { }
 
