@@ -1,4 +1,3 @@
-
 <!--
   Data binding: elementos ativos html
   Properties binding - [src]
@@ -12,23 +11,47 @@
   - Binding de atributos
 -->
 
+<h1>Exemplos Event Binding:</h1>
+<button (click)="onClick($event)">Clique em mim!</button>
+
+<!--
+  Propertie binding faz com chave: [value] = "valorDoInput"
+  Event binding faz com parenteses: (keyup)="digitouAlgo($event)
+
+  *Todos os eventos para capturar são informações do templates para o componentes
+-->
+<input
+  type="text"
+  [value]="valorDoInput"
+  (keyup)="digitouAlgo($event)"
+  (mouseenter)="passouMouse()"
+/>
+
+valor do Input: {{ valorDoInput }}
+
+<hr />
+
+<h1>Exemplos Property Binding:</h1>
+
 <h2>Palavra: {{ palavra }}</h2>
 <h2>Cor: {{ color }}</h2>
-<input type="text" [value]="initialValue">
+<input type="text" [value]="initialValue" />
 
-<br>
+<br />
 
 <button [disabled]="isDisabled">Clique em mim!</button>
 
-<br>
+<br />
 
 <!--
   operador ternario: [attr.aria-label]="isDisabled ? 'Botão desabilitado' : accessibilityText
   função: [attr.aria-label]="nomeFuncao()"
   atributo:  [attr.aria-label]="nomeAtributo"
 -->
-<p [attr.aria-label]="isDisabled ? 'Botão desabilitado' : accessibilityText">Um texto qualquer... </p>
+<p [attr.aria-label]="isDisabled ? 'Botão desabilitado' : accessibilityText">
+  Um texto qualquer...
+</p>
 
-<br>
+<br />
 
-<img [src]="imageURL">
+<img [src]="imageURL" />
