@@ -16,9 +16,26 @@
   [valor] = "'Olá, mundo!'" - String
   [valor] = "10" - Number
 -->
+
+Valor atual de valorContador: {{valorContador}}
+
+<!--EXERCÍCIO CONTADOR
+  Captura essa mudança: (valorMudou)="onValorAtualizadoNoContador($event)"
+
+  Two way data binding: ([valor])="valorContador"
+  - Entrando e saindo valor contador
+  - valorContador ele vai ser tanto vai enviar informação, quanto vai receber.
+
+  Modelo 1 (Trabalhoso):
+
+  <app-exercicio-contador
+  [valor]="valorContador"
+  (valorChanges)="onValorAtualizadoNoContador($event)"
+  ></app-exercicio-contador>
+
+-->
 <app-exercicio-contador
-  [valor]="10"
-  (valorMudou)="onValorAtualizadoNoContador($event)"
+  [(valor)]="valorContador"
 ></app-exercicio-contador>
 
 <hr>
