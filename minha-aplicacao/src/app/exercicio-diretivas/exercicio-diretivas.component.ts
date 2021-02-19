@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
 
+import { MEMES_AGRUPADOS_POR_CATEGORIA } from './exercicio-diretivas.constants';
+
 @Component({
   selector: 'app-exercicio-diretivas',
   templateUrl: './exercicio-diretivas.component.html',
-  styleUrls: ['./exercicio-diretivas.component.scss']
+  styleUrls: ['./exercicio-diretivas.component.scss'],
 })
 export class ExercicioDiretivasComponent {
   //Array
-  listaFrutas = [
-    'Maçâ',
-    'Laranja',
-    'Mamão',
-    'Pêra',
-  ];
+  listaFrutas = ['Maçâ', 'Laranja', 'Mamão', 'Pêra'];
 
   //Array de Objeto
   carrosLista = [
@@ -31,17 +28,20 @@ export class ExercicioDiretivasComponent {
     {
       placa: 'OGK-7095',
       cor: 'Vermelho',
-    }
+    },
   ];
-
 
   deveExibir = false;
 
-  trocarValor(){
+  PREFIXO_IMAGEM_URL = 'https://raw.githubusercontent.com/vitorfgsantos/angular-memes-diretivas/master/images';
+  //Importando arquivo exercicio-diretivas.constants.ts para o componente exercicio-diretivas.component.ts
+  MEMES_AGRUPADOS_POR_CATEGORIA = MEMES_AGRUPADOS_POR_CATEGORIA;
+
+  trocarValor() {
     this.deveExibir = !this.deveExibir;
   }
 
-  soma(numero1: number, numero2: number){
+  soma(numero1: number, numero2: number) {
     return numero1 + numero2;
   }
 }

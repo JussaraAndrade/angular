@@ -5,11 +5,9 @@
 <!--ngIf-->
 
 <!--Condicional - Bloco Else-->
-<div *ngIf="deveExibir; else blocoSenao" >Olá! Estou dentro do ngIf</div>
+<div *ngIf="deveExibir; else blocoSenao">Olá! Estou dentro do ngIf</div>
 
-<div *ngIf="!deveExibir">
-  VOU SER EXIBIDO QUANDO deveExibir for FALSE
-</div>
+<div *ngIf="!deveExibir">VOU SER EXIBIDO QUANDO deveExibir for FALSE</div>
 
 <ng-template #blocoSenao>
   VOU SER EXIBIDO QUANDO deveExibir for FALSE
@@ -20,19 +18,17 @@
 
 <!--Sintaxe expandida-->
 <ng-template [ngIf]="deveExibir">
-  <div>
-    Content to render when condition is true.
-  </div>
+  <div>Content to render when condition is true.</div>
 </ng-template>
 
 <!--ngIf; é um if dentro do templates-->
-<div *ngIf="deveExibir; then thenBlock else elseBlock"></div>
+<div *ngIf="deveExibir; then thenBlock; else elseBlock"></div>
 <!--Se a condição for verdadeira irá aparecer esse bloco-->
 <ng-template #thenBlock>Bloco true do ng-template</ng-template>
 <!--Se não ele irá aparece outro bloco -->
 <ng-template #elseBlock>Bloco false do ng-template</ng-template>
 
-<hr>
+<hr />
 
 <!--ngFor-->
 
@@ -44,7 +40,40 @@
 
 <ul>
   <!--index as index; let index = index - usa index como index -->
-  <li *ngFor="let carro of carrosLista; let index = index; first as primeiro; last as ultimo">
-      {{primeiro}} - {{index + 1}} - {{ carro.placa }} - {{carro.cor}} - {{ultimo}}
+  <li
+    *ngFor="
+      let carro of carrosLista;
+      let index = index;
+      first as primeiro;
+      last as ultimo
+    "
+  >
+    {{ primeiro }} - {{ index + 1 }} - {{ carro.placa }} - {{ carro.cor }} -
+    {{ ultimo }}
+  </li>
+</ul>
+
+<hr />
+<!--Atividade-->
+<h2>Resolução do exercício</h2>
+<br />
+<br />
+
+<ul>
+  <li *ngFor="let memesAgrupados of MEMES_AGRUPADOS_POR_CATEGORIA">
+    <h2>{{ memesAgrupados.categoria }}</h2>
+
+    <div *ngFor="let meme of memesAgrupados.memes; let par = even">
+      {{ par }}
+
+      <!--PREFIXO_IMAGEM_URL-->
+      <img
+        [src]="PREFIXO_IMAGEM_URL + meme.imagemURL"
+        *ngIf="par; else blocoPar"
+      />
+      <ng-template #blocoPar>
+        <h2>PAR</h2>
+      </ng-template>
+    </div>
   </li>
 </ul>
