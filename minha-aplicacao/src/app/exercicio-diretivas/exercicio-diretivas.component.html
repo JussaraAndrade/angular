@@ -2,6 +2,8 @@
 
 <button (click)="trocarValor()">Trocar valor</button>
 
+<!--ngIf-->
+
 <!--Condicional - Bloco Else-->
 <div *ngIf="deveExibir; else blocoSenao" >Olá! Estou dentro do ngIf</div>
 
@@ -30,5 +32,19 @@
 <!--Se não ele irá aparece outro bloco -->
 <ng-template #elseBlock>Bloco false do ng-template</ng-template>
 
+<hr>
 
+<!--ngFor-->
 
+<ul>
+  <li *ngFor="let fruta of listaFrutas">{{ fruta }}</li>
+</ul>
+<!--Repete a tag p quantas vezes quiser -->
+<p *ngFor="let fruta of listaFrutas">{{ fruta }}</p>
+
+<ul>
+  <!--index as index; let index = index - usa index como index -->
+  <li *ngFor="let carro of carrosLista; let index = index; first as primeiro; last as ultimo">
+      {{primeiro}} - {{index + 1}} - {{ carro.placa }} - {{carro.cor}} - {{ultimo}}
+  </li>
+</ul>
