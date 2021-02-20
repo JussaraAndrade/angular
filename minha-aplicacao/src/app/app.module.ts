@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ExercicioContadorComponent } from './exercicio-contador/exercicio-contador.component';
 import { ExercicioDiretivasComponent } from './exercicio-diretivas/exercicio-diretivas.component';
 import { ExercicioNgclassComponent } from './exercicio-ngclass/exercicio-ngclass.component';
+import { ExercicioPipesComponent } from './exercicio-pipes/exercicio-pipes.component';
 
 @NgModule({
   //Adiciona o componente no módulo principal
@@ -21,7 +22,8 @@ import { ExercicioNgclassComponent } from './exercicio-ngclass/exercicio-ngclass
     ExercicioDataBindingComponent,
     ExercicioContadorComponent,
     ExercicioDiretivasComponent,
-    ExercicioNgclassComponent
+    ExercicioNgclassComponent,
+    ExercicioPipesComponent
   ],
   imports: [
     BrowserModule,
