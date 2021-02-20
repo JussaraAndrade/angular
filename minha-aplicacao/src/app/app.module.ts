@@ -1,19 +1,25 @@
-import { NgModule } from '@angular/core';
+import '@angular/common/locales/global/pt';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ExercicioDataBindingComponent } from './exercicio-data-binding/exercicio-data-binding.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
 import { ExercicioContadorComponent } from './exercicio-contador/exercicio-contador.component';
+import { ExercicioDataBindingComponent } from './exercicio-data-binding/exercicio-data-binding.component';
 import { ExercicioDiretivasComponent } from './exercicio-diretivas/exercicio-diretivas.component';
 import { ExercicioNgclassComponent } from './exercicio-ngclass/exercicio-ngclass.component';
 import { ExercicioPipesComponent } from './exercicio-pipes/exercicio-pipes.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  //Adiciona o componente no módulo principal
+  //Adiciona o componente no módulo principal da aplicação
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -29,7 +35,10 @@ import { ExercicioPipesComponent } from './exercicio-pipes/exercicio-pipes.compo
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt'
+  }],
   bootstrap: [AppComponent]
 })
 //Módulo principal
