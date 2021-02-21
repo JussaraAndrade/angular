@@ -1,5 +1,25 @@
 <!--Semantica - Header, main, footer -->
 <header class="header">
   <!--Elemento-->
-  <h1 class="header__title">{{title}}</h1>
+  <h1 class="header__title">{{ title }}</h1>
+  <ul class="nav-bar-list">
+    <li>
+      <!--
+        - Tag de links: <a></a>
+        - routerLink; é uma diretiva do angular para fazer a navegação.
+        - routerLinkActive; diretiva responsavel por colocar classe
+      -->
+
+      <!--[routerLinkActiveOptions]: property binding - considera a rota exata.
+          Só irá adicionar a classe ativado atraves do routerLinkActive, se a rota
+          no momento for exatamente esse caminho: routerLink = ""  -->
+      <a routerLink="" routerLinkActive="ativado" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    </li>
+    <li>
+      <a routerLink="extrato" routerLinkActive="ativado">Extrato</a>
+    </li>
+    <li>
+      <a routerLink="login" routerLinkActive="ativado">Login</a>
+    </li>
+  </ul>
 </header>
