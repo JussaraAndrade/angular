@@ -5,7 +5,9 @@
   </div>
 
   <div *ngIf="erroNoCarregamento">
-    <h2>Deu erro :(</h2>
+    <div class="alert alert-danger" role="alert">
+      Deu erro :(
+    </div>
     <button class="btn btn-primary" (click)="carregarExtrato()">Tentar novamente</button>
   </div>
 

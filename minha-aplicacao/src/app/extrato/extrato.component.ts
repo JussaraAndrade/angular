@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { finalize, take } from 'rxjs/operators';
 
 import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
@@ -57,6 +57,15 @@ export class ExtratoComponent implements OnInit {
     this.extratoService
       .getTransacoes()
       .pipe(
+        /*
+          Programação reativa: rxjs.
+          Fechar a escuta:
+          assim que terminar descreve.
+
+          - take(1); emite apenas uma única vez a resposta da chamada;
+          - ele fica responsavel por descrever para não ficar aberto evitando problema de memory.
+        */
+        take(1),
         finalize(() =>
           //Quando terminar de carregar é false - irá sumir o spinner.
           this.estaCarregando = false)
@@ -66,6 +75,8 @@ export class ExtratoComponent implements OnInit {
       - inscrever nesse objeto, observar o objeto quando vai terminar.
       - response; quando tiver a resposta faz alguma coisa
       */
+
+      //Escuta ficar aberta, isso causa um problema memory leaks a aplicação vai está alocando muita memória
       .subscribe(
         response => this.onSucesso(response),
         error => this.onError(error),
