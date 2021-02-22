@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 import { Transacao } from './extrato.interfaces';
 
@@ -26,16 +27,21 @@ Lembrando que:
 
 */
 export class ExtratoService {
+  API_URL = environment.API_URL;
+
   //Injeção dependência do httpClient
   constructor(private http: HttpClient) {}
 
   getTransacoes() {
     /*Requisição get
-
     <{}> - retorna uma array do objeto
     */
-    return this.http.get<Transacao[]>(
-      'http://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes'
-    );
+
+    /*
+      Js - template string: `${this.API_URL}/transacoes`:
+      return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`);
+    */
+
+    return this.http.get<Transacao[]>(this.API_URL + '/transacoes');
   }
 }
