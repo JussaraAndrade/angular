@@ -36,13 +36,20 @@ export class ExtratoService {
     /*Requisição get
     <{}> - retorna uma array do objeto
     */
-
     /*
       Js - template string: `${this.API_URL}/transacoes`:
       return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`);
     */
     //return throwError(new Error('Erro genérico.'));
 
+
+    /*Simular Error:
+    const error = throwError('Erro genérico')
+    return timer(3000).pipe(mergeMap(() => error)
+    );
+    */
+
     return this.http.get<Transacao[]>(this.API_URL + '/transacoes');
+
   }
 }

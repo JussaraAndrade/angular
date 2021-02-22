@@ -6,7 +6,7 @@
 
   <div *ngIf="erroNoCarregamento">
     <h2>Deu erro :(</h2>
-    <button (click)="carregarExtrato()">Tentar novamente</button>
+    <button class="btn btn-primary" (click)="carregarExtrato()">Tentar novamente</button>
   </div>
 
   <table class="table table-hover" *ngIf="!estaCarregando && !erroNoCarregamento">

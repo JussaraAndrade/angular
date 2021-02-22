@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 
 import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
@@ -55,19 +56,30 @@ export class ExtratoComponent implements OnInit {
     */
     this.extratoService
       .getTransacoes()
+      .pipe(
+        finalize(() =>
+          //Quando terminar de carregar é false - irá sumir o spinner.
+          this.estaCarregando = false)
+      )
 
       /*
       - inscrever nesse objeto, observar o objeto quando vai terminar.
       - response; quando tiver a resposta faz alguma coisa
       */
-      .subscribe((response) => {
-        //Quando terminar de carregar é false - irá sumir o spinner.
-        this.estaCarregando = false;
-        this.transacoes = response;
-      },
-        error =>{
-        this.estaCarregando = false;
-        this.erroNoCarregamento = true;
-      });
+      .subscribe(
+        response => this.onSucesso(response),
+        error => this.onError(error),
+
+      );
+  }
+
+  onSucesso(response: Transacao[]){
+
+     this.transacoes = response;
+  }
+
+  onError(error: any){
+    this.erroNoCarregamento = true;
+    console.error(error);
   }
 }
