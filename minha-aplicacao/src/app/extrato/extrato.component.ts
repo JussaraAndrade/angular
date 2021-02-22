@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
 
 @Component({
   selector: 'app-extrato',
   templateUrl: './extrato.component.html',
-  styleUrls: ['./extrato.component.scss']
+  styleUrls: ['./extrato.component.scss'],
 })
 export class ExtratoComponent implements OnInit {
-  //Array de Objeto
-  transacoes:any = [];
+  //Tipagem
+  transacoes!: Transacao[];
 
   /*
    Importe, e depois instancia dentro do constructor: ExtratoService do serviço (extrato.service.ts):
@@ -33,12 +34,23 @@ export class ExtratoComponent implements OnInit {
      constructor(private backend: BackendService, private logger: Logger) {}
 
   */
-  constructor(private extratoService: ExtratoService) {
-
-  }
+  constructor(private extratoService: ExtratoService) {}
 
   ngOnInit(): void {
-    this.transacoes = this.extratoService.getTransacoes();
-  }
+    /*
+    Observable; retornar um objetivo tipo observable o objeto que pode
+    observar quando tiver a resposta, quando completado conseguir pegar
+    o retorno.
+    */
+    this.extratoService
+      .getTransacoes()
 
+      /*
+      - inscrever nesse objeto, observar o objeto quando vai terminar.
+      - response; quando tiver a resposta faz alguma coisa
+    */
+      .subscribe((response) => {
+        this.transacoes = response;
+      });
+  }
 }
