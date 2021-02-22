@@ -12,8 +12,11 @@
 
       <!--[routerLinkActiveOptions]: property binding - considera a rota exata.
           Só irá adicionar a classe ativado atraves do routerLinkActive, se a rota
-          no momento for exatamente esse caminho: routerLink = ""  -->
-      <a routerLink="" routerLinkActive="ativado" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          no momento for exatamente esse caminho: routerLink = ""
+           prefixo da rota: "home"
+           <a routerLink="home" routerLinkActive="ativado" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        -->
+      <a routerLink="home" routerLinkActive="ativado">Home</a>
     </li>
     <li>
       <a routerLink="extrato" routerLinkActive="ativado">Extrato</a>
