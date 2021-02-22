@@ -32,7 +32,7 @@ export class ExtratoService {
   //Injeção dependência do httpClient
   constructor(private http: HttpClient) {}
 
-  getTransacoes() {
+  getTransacoes(page: number) {
     /*Requisição get
     <{}> - retorna uma array do objeto
     */
@@ -49,7 +49,11 @@ export class ExtratoService {
     );
     */
 
-    return this.http.get<Transacao[]>(this.API_URL + '/transacoes');
+    return this.http.get<Transacao[]>(this.API_URL + '/transacoes', {
+      params: {
+        _page: String(page),
+      }
+    });
 
   }
 }

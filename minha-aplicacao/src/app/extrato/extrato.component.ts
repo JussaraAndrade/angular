@@ -15,6 +15,7 @@ export class ExtratoComponent implements OnInit {
 
   estaCarregando!: boolean;
   erroNoCarregamento!: boolean;
+  pagina = 1;
 
   /*
    Importe, e depois instancia dentro do constructor: ExtratoService do serviço (extrato.service.ts):
@@ -49,13 +50,15 @@ export class ExtratoComponent implements OnInit {
     //Quanto estive carregando é true - irá aparecer spinner
     this.estaCarregando = true;
     this.erroNoCarregamento = false;
+
+
     /*
     Observable; retornar um objetivo tipo observable o objeto que pode
     observar quando tiver a resposta, quando completado conseguir pegar
     o retorno.
     */
     this.extratoService
-      .getTransacoes()
+      .getTransacoes(this.pagina)
       .pipe(
         /*
           Programação reativa: rxjs.
@@ -92,5 +95,15 @@ export class ExtratoComponent implements OnInit {
   onError(error: any){
     this.erroNoCarregamento = true;
     console.error(error);
+  }
+
+  paginaAnterior(){
+    this.pagina = this.pagina - 1;
+    this.carregarExtrato();
+  }
+
+  proximaPagina(){
+    this.pagina = this.pagina + 1;
+    this.carregarExtrato();
   }
 }
