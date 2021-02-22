@@ -41,6 +41,7 @@ export class ExtratoService {
       Js - template string: `${this.API_URL}/transacoes`:
       return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`);
     */
+    //return throwError(new Error('Erro genérico.'));
 
     return this.http.get<Transacao[]>(this.API_URL + '/transacoes');
   }

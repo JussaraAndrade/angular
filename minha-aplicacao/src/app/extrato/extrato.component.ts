@@ -12,6 +12,9 @@ export class ExtratoComponent implements OnInit {
   //Tipagem
   transacoes!: Transacao[];
 
+  estaCarregando!: boolean;
+  erroNoCarregamento!: boolean;
+
   /*
    Importe, e depois instancia dentro do constructor: ExtratoService do serviço (extrato.service.ts):
   extratoService: any;
@@ -37,6 +40,14 @@ export class ExtratoComponent implements OnInit {
   constructor(private extratoService: ExtratoService) {}
 
   ngOnInit(): void {
+    //Chamar a função
+    this.carregarExtrato();
+  }
+
+  carregarExtrato(){
+    //Quanto estive carregando é true - irá aparecer spinner
+    this.estaCarregando = true;
+    this.erroNoCarregamento = false;
     /*
     Observable; retornar um objetivo tipo observable o objeto que pode
     observar quando tiver a resposta, quando completado conseguir pegar
@@ -48,9 +59,15 @@ export class ExtratoComponent implements OnInit {
       /*
       - inscrever nesse objeto, observar o objeto quando vai terminar.
       - response; quando tiver a resposta faz alguma coisa
-    */
+      */
       .subscribe((response) => {
+        //Quando terminar de carregar é false - irá sumir o spinner.
+        this.estaCarregando = false;
         this.transacoes = response;
+      },
+        error =>{
+        this.estaCarregando = false;
+        this.erroNoCarregamento = true;
       });
   }
 }
