@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ContatosComponent } from './contatos/contatos.component';
 import { ExtratoComponent } from './extrato/extrato.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -19,11 +20,10 @@ const routes: Routes = [{
     component: ExtratoComponent
   },
   {
-    /*
-    Direciona de forma completa:
-    1 - Digitando o endereço: localhost:4200,
-    2-  o caminho se autocompleta automaticamente: localhost:4200/home.
-    */
+    path: 'contatos',
+    component: ContatosComponent
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -32,6 +32,7 @@ const routes: Routes = [{
     path: '**',
     component: NaoEncontradoComponent
   }
+
 ];
 
 @NgModule({

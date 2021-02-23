@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContatosComponent } from './contatos/contatos.component';
 import { ExtratoComponent } from './extrato/extrato.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -36,6 +37,7 @@ registerLocaleData(localePt, 'pt');
     LoginComponent,
     ExtratoComponent,
     NaoEncontradoComponent,
+    ContatosComponent,
   ],
 
   /*

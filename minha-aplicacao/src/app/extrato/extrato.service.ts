@@ -29,25 +29,9 @@ Lembrando que:
 export class ExtratoService {
   API_URL = environment.API_URL;
 
-  //Injeção dependência do httpClient
   constructor(private http: HttpClient) {}
 
   getTransacoes(page: number) {
-    /*Requisição get
-    <{}> - retorna uma array do objeto
-    */
-    /*
-      Js - template string: `${this.API_URL}/transacoes`:
-      return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`);
-    */
-    //return throwError(new Error('Erro genérico.'));
-
-
-    /*Simular Error:
-    const error = throwError('Erro genérico')
-    return timer(3000).pipe(mergeMap(() => error)
-    );
-    */
 
     return this.http.get<Transacao[]>(this.API_URL + '/transacoes', {
       params: {
