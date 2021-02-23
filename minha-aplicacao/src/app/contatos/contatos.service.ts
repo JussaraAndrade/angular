@@ -12,8 +12,12 @@ export class ContatosService {
   API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) {}
-
+  //Endpoints
   getContatos() {
     return this.http.get<Contato[]>(this.API_URL + '/contatos');
+  }
+
+  getContato(id: any) {
+    return this.http.get<Contato>(this.API_URL + '/contatos/' + id);
   }
 }
