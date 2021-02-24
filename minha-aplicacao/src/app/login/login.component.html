@@ -9,8 +9,9 @@
         [(ngModel)]="email"
         required
         email
+        [class.is-invalid]="exibeErro('email', form)"
       />
-      <p *ngIf="exibeErro('email', form)" class="text-left">E-mail inválido.</p>
+      <div *ngIf="exibeErro('email', form)" class="invalid-feedback text-left">E-mail inválido.</div>
     </div>
     <div class="p-2">
       <input
@@ -21,10 +22,11 @@
         ngModel
         [(ngModel)]="password"
         required
+        [class.is-invalid]="exibeErro('password', form)"
       />
-      <p *ngIf="exibeErro('password', form)" class="text-left">
+      <div *ngIf="exibeErro('password', form)" class="invalid-feedback text-left">
         Senha inválida.
-      </p>
+      </div>
     </div>
 
     <div class="p-2">
