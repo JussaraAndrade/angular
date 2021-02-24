@@ -4,6 +4,7 @@ import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,20 +19,8 @@ import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localePt, 'pt');
 
-//Adiciona o componente no módulo principal da aplicação
-
-/*
-  @NgModule - é um decoretor que vai marcar no angular essa classe é uma classe de módulo
-*/
 @NgModule({
 
-  /*
-    declarations:
-
-    - Modulos de funcionalidade
-    - Recebem meta dados
-    - declarations; recebem os componentes, diretivas e pipes para serem declarados
-  */
   declarations: [
     AppComponent,
     HomeComponent,
@@ -42,39 +31,23 @@ registerLocaleData(localePt, 'pt');
     DetalhesContatoComponent
   ],
 
-  /*
-  imports:
 
-  - são importações de outros módulos.
-  - pode trazer outros módulos e importação aqui
-  - os módulos são importados automaticamente
-  */
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //Importar HttpClientModule
     HttpClientModule,
+    //Traz diversas diretivas para trabalhar com formulários
+    FormsModule,
     SharedModule,
 
   ],
 
-  /*
-  providers:
-
-  - normalmente colocam as services
-  - consegue prover valores
-
-  */
   providers: [{
     provide: LOCALE_ID,
     useValue: 'pt'
   }],
-  /*
-  bootstrap:
 
-  - meta dados; inicializa a aplicação, ele só existe nesse módulo.
-  */
   bootstrap: [AppComponent]
 })
-//Módulo principal
+
 export class AppModule { }
