@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 
 import { LoginService } from './login.service';
 
@@ -16,13 +17,16 @@ export class LoginComponent  {
   email!: string;
   password!: string;
 
-  //Injetar
+  estaCarregando!: boolean;
+  errorNoLogin!: boolean;
+
   constructor(
-    private loginService: LoginService
-  ){
-  }
+    private loginService: LoginService,
+  ){}
 
   onSubmit(form: any) {
+    this.errorNoLogin = false;
+
     if (!form.valid) {
       form.controls.email.markAsTouched();
       form.controls.password.markAsTouched();
@@ -42,12 +46,18 @@ export class LoginComponent  {
   }
 
   login(){
+    this.estaCarregando = true;
+
     this.loginService.logar(this.email, this.password)
+      .pipe(
+        finalize(() => this.estaCarregando = false)
+      )
       .subscribe(
         response => {
           console.log('Sucesso! Logou!');
         },
         error =>{
+          this.errorNoLogin = true;
           console.log('Deu ruim! Não logou!');
         }
       )
@@ -58,8 +68,6 @@ export class LoginComponent  {
       return false;
     }
 
-    return (
-      form.controls[nomeControle].invalid && form.controls[nomeControle].touched
-    );
+    return form.controls[nomeControle].invalid && form.controls[nomeControle].touched;
   }
 }

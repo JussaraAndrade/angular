@@ -30,10 +30,18 @@
       </div>
     </div>
 
+    <div *ngIf="errorNoLogin" class="alert alert-danger" role="alert">
+      Usuário ou senha inválidos.
+    </div>
+
     <div class="p-2">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="estaCarregando">
         Entrar
       </button>
     </div>
   </form>
+
+  <div *ngIf="estaCarregando" class="spinner-border" role="status">
+    <span class="visually-hidden"></span>
+  </div>
 </div>
