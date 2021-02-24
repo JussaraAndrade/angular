@@ -36,7 +36,6 @@ registerLocaleData(localePt, 'pt');
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    //Traz diversas diretivas para trabalhar com formulários
     FormsModule,
     SharedModule,
 
