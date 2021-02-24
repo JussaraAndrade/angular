@@ -10,6 +10,7 @@
         required
         email
         [class.is-invalid]="exibeErro('email', form)"
+        #emailInput
       />
       <div *ngIf="exibeErro('email', form)" class="invalid-feedback text-left">E-mail inválido.</div>
     </div>
@@ -22,7 +23,7 @@
         ngModel
         [(ngModel)]="password"
         required
-        [class.is-invalid]="exibeErro('password', form)"
+        [class.is-invalid]="exibeErro('password', form)"  #senhaInput
       />
       <div *ngIf="exibeErro('password', form)" class="invalid-feedback text-left">
         Senha inválida.
