@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 
 import { LoginService } from './login.service';
@@ -22,6 +23,7 @@ export class LoginComponent  {
 
   constructor(
     private loginService: LoginService,
+    private router: Router,
   ){}
 
   onSubmit(form: any) {
@@ -35,6 +37,7 @@ export class LoginComponent  {
         this.emailInput.nativeElement.focus();
         return;
       }
+
       if(form.controls.password.invalid){
         this.senhaInput.nativeElement.focus();
         return;
@@ -53,14 +56,18 @@ export class LoginComponent  {
         finalize(() => this.estaCarregando = false)
       )
       .subscribe(
-        response => {
-          console.log('Sucesso! Logou!');
-        },
-        error =>{
-          this.errorNoLogin = true;
-          console.log('Deu ruim! Não logou!');
-        }
-      )
+        //_response; variavel com "_" indica que eles não estão sendo usadas.
+        response => this.onSuccessLogin(),
+        error => this.onErrorLogin(),
+      );
+  }
+
+  onSuccessLogin() {
+    this.router.navigate(['home']);
+  }
+
+  onErrorLogin(){
+    this.errorNoLogin = true;
   }
 
   exibeErro(nomeControle: string, form: NgForm) {
