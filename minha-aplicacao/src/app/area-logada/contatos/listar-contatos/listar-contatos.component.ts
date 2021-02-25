@@ -72,4 +72,8 @@ export class ListarContatosComponent implements OnInit {
 
   }
 
+  novoContato(){
+    this.router.navigate(['contatos/novo']);
+  }
+
 }
