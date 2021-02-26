@@ -30,7 +30,6 @@ export class ContatosService {
     return this.http.post<Contato[]>(this.API_URL + '/contatos', contato, this.httpOptions);
   }
 
-
   updateContato(id: string, contato: Contato) {
     return this.http.put<Contato[]>(this.API_URL + '/contatos/' +id, contato, this.httpOptions);
   }
