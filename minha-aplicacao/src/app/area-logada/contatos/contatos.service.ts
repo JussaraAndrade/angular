@@ -17,12 +17,12 @@ export class ContatosService {
   };
 
   constructor(private http: HttpClient) {}
-  //Endpoints
+
   getContatos() {
     return this.http.get<Contato[]>(this.API_URL + '/contatos');
   }
 
-  getContato(id: string) {
+  getContato(id: string | null) {
     return this.http.get<Contato>(this.API_URL + '/contatos/' + id, this.httpOptions);
   }
 
@@ -30,8 +30,8 @@ export class ContatosService {
     return this.http.post<Contato[]>(this.API_URL + '/contatos', contato, this.httpOptions);
   }
 
-  updateContato(id: string, contato: Contato) {
-    return this.http.put<Contato[]>(this.API_URL + '/contatos/' +id, contato, this.httpOptions);
+  updateContato(id: string | null, contato: Contato) {
+    return this.http.put<Contato>(this.API_URL + '/contatos/' + id, contato, this.httpOptions);
   }
 
   deleteContato(id: string) {

@@ -11,12 +11,19 @@
   </div>
 
   <div *ngIf="!estaCarregando && !erroNoCarregamento">
-    <button class="btn btn-primary" (click)="paginaAnterior()" [disabled]="pagina === 1" >Página anterior</button>
+    <button
+      class="btn btn-primary"
+      (click)="paginaAnterior()"
+      [disabled]="pagina === 1"
+    >
+      Página anterior
+    </button>
     <p>Página atual: {{ pagina }}</p>
-    <button class="btn btn-primary" (click)="proximaPagina()">Próxima página</button>
+    <button class="btn btn-primary" (click)="proximaPagina()">
+      Próxima página
+    </button>
 
-    <table
-      class="table table-hover">
+    <table class="table table-hover">
       <tr>
         <th>ID</th>
         <th>Data</th>

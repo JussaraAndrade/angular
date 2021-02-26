@@ -30,8 +30,8 @@ export class DetalharContatoComponent implements OnInit {
     this.estaCarregando = true;
     this.erroNoCarregamento = false;
 
-    const idContato = this.route.snapshot.paramMap.get('id');
-    this.contatosService.getContato('idContato')
+    const idContato: string | null  = this.route.snapshot.paramMap.get('id');
+    this.contatosService.getContato(idContato)
       .pipe(
         take(1),
         finalize(() => this.estaCarregando = false)
