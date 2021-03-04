@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 
 
@@ -21,7 +22,13 @@ export class AppComponent {
     //Evita vazação de memória
       .pipe(
         //Pegar apenas um único dado, e encerra.
-        take(1)
+        take(1),
+        map(response => {
+          return response.map((element: any) => {
+            element.id = element.id * 10;
+            return element;
+          });
+        })
       )
       //Escuta
       .subscribe(response => {
@@ -29,14 +36,12 @@ export class AppComponent {
       });
   }
 
-  getTransacoes(){
+  getTransacoes(): Observable<any>{
     return this.http.get('https://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes');
   }
 
   getContatos(){
     return this.http.get('https://my-json-server.typicode.com/vitorfgsantos/fake-api/contatos');
   }
-
-
 
 }
