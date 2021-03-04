@@ -1,67 +1,54 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { delay, map, take } from 'rxjs/operators';
-
-
+import { delay, mergeMap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'rxjs-projeto';
 
-  constructor(
-    private http: HttpClient,
-  ){}
+  constructor(private http: HttpClient) {}
 
-  chamarAPI(){
-    //this.getTransacoes()
-    //Evita vazação de memória
-     // .pipe(
-        //Pegar apenas um único dado, e encerra.
-       // take(1),
-       // map(response => {
-        //  return response.map((element: any) => {
-        //    element.id = element.id * 10;
-        //    return element;
-        //  });
-      //  })
-     // )
-      //Escuta
-    //  .subscribe(response => {
-      //  console.log('Response: ', response);
-     // });
-    console.log('Chamou a API...')
+  chamarAPI() {
+    console.log('Chamou a API...');
+    //1 - vai chamar id do usuário: (getIdDoUsuario) em 1 segundo
     this.getIdDoUsuario()
-     .pipe(
-      take(1),
-     )
-      .subscribe(response =>{
-        console.log('Response: ', response);
+      //Evita vazação de memória
+      .pipe(
+        //Pega apenas um único dado, e encerra.
+        take(1),
+        //2- depois remapear para getTransacoes
+        mergeMap(idUsuario => {
+          console.log('idUsuario: ', idUsuario);
+          return this.getTransacoes(idUsuario);
+        })
+      )
+      //3 - quando for concluido irá cair nesse response final
+      .subscribe((response) => {
+        console.log('Response final: ', response);
       });
   }
 
   //Transformar um dado em Observable: of
-  getIdDoUsuario(){
+  getIdDoUsuario(): Observable<string> {
+    //Observable retorna uma string
     //Chamada assincrona, resolvido imediatamente
-    return of('1001')
-      .pipe(
-        delay(1000),
-        //mapeamento
-        map(response => response as any * 10),
-      );
-    //return this.http.get('https://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes');
+    return of('1001').pipe(delay(1000));
   }
 
-  getTransacoes(): Observable<any>{
-    return this.http.get('https://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes');
+  getTransacoes(idUsuario: string): Observable<any> {
+    return this.http.get(
+      'https://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes'
+    );
   }
 
-  getContatos(){
-    return this.http.get('https://my-json-server.typicode.com/vitorfgsantos/fake-api/contatos');
+  getContatos() {
+    return this.http.get(
+      'https://my-json-server.typicode.com/vitorfgsantos/fake-api/contatos'
+    );
   }
-
 }
